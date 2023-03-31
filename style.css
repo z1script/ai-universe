@@ -2,10 +2,44 @@
 .ai-tool_image {
   border-radius: 1.3rem;
 }
+
+#btn-arrow {
+  border: none;
+  background: none;
+}
+
 .arrow {
   cursor: pointer;
+  border: 1px solid #ffb6c138;
   background-color: #fef7f7;
   color: #eb5757;
   padding: 1.2rem;
   border-radius: 50%;
+}
+
+.modal-dialog {
+  margin: 0 auto;
+  max-width: 75vw;
+}
+
+.special-card {
+  border: 1px solid #eb5757;
+  background-color: #eb57571e;
+}
+
+.pricing {
+  background-color: white;
+  width: 150px;
+  height: 100px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.accuracy {
+  background-color: #eb5757;
+  color: white;
+  border-radius: 5px;
+  right: 2rem;
+  top: 2rem;
+  padding: 5px 10px;
 }
