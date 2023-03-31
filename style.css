@@ -1,0 +1,11 @@
+/* some custom css styles */
+.ai-tool_image {
+  border-radius: 1.3rem;
+}
+.arrow {
+  cursor: pointer;
+  background-color: #fef7f7;
+  color: #eb5757;
+  padding: 1.2rem;
+  border-radius: 50%;
+}
