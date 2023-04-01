@@ -43,7 +43,17 @@ const displayAiTools = (tools) => {
         </div>
         `;
     aiToolsContainer.appendChild(aiToolDiv);
+    toggleSpinner(false);
   });
+};
+
+const toggleSpinner = (isLoading) => {
+  const spinner = document.getElementById("spinner");
+  if (isLoading === true) {
+    spinner.classList.remove("d-none");
+  } else {
+    spinner.classList.add("d-none");
+  }
 };
 
 const loadAiToolsDetails = async (id) => {
