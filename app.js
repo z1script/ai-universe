@@ -5,6 +5,20 @@ const loadAiTools = (dataLimit) => {
 };
 
 const displayAiTools = (tools, dataLimit) => {
+  let arr = [];
+  for (const tool of tools) {
+    const date = new Date(tool.published_in);
+    arr.push({date});
+  }
+
+  // Sort in Ascending order (low to high)
+  document.getElementById("btn-sort").addEventListener("click", function () {
+    const sortedAsc = arr.sort(
+      (objA, objB) => Number(objA.date) - Number(objB.date)
+    );
+    console.log(sortedAsc);
+  });
+
   const aiToolsContainer = document.getElementById("ai-tools-container");
   aiToolsContainer.textContent = "";
   const seeMore = document.getElementById("see-more");
