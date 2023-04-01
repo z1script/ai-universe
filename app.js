@@ -56,6 +56,10 @@ const loadAiToolsDetails = async (id) => {
 const displayAiToolDetails = (data) => {
   console.log(data);
   const modalBody = document.getElementById("modal-body");
+  const pricing = data.pricing;
+  const features = data.features;
+  const integrations = data.integrations;
+  const examples = data.input_output_examples;
   modalBody.innerHTML = `
     <div class="row row-cols-1 align-items-center row-cols-xl-2 g-4 px-5">
     <div class="col">
@@ -64,29 +68,44 @@ const displayAiToolDetails = (data) => {
             <h5 class="card-title">${data.description}</h5>
             <div class= "d-flex flex-wrap flex-lg-nowrap justify-content-center fw-semibold gap-3 my-4">
                 <div class="pricing text-success p-4">
-                ${data.pricing[0].price + " " + data.pricing[0].plan}</div>
+                ${
+                  pricing
+                    ? pricing[0].price + " " + pricing[0].plan
+                    : "Free Of Cost/Basic"
+                }</div>
                 <div class="pricing text-warning p-4">${
-                  data.pricing[1].price + " " + data.pricing[1].plan
+                  pricing
+                    ? pricing[1].price + " " + pricing[1].plan
+                    : "Free Of Cost/Pro"
                 }</div>
                 <div class="pricing text-danger py-3">${
-                  data.pricing[2].price + " " + data.pricing[2].plan
+                  pricing
+                    ? pricing[2].price + " " + pricing[2].plan
+                    : "Free Of Cost/ Free of Cost/Enterprise"
                 }</div>
             </div>
             <div class="d-md-flex justify-content-around">
                 <div>
                     <h4>Features</h4>
                     <ul>
-                    <li>${data.features[1].feature_name}</li>
-                        <li>${data.features[2].feature_name}</li>
-                        <li>${data.features[3].feature_name}</li>
+                    <li>${features[1].feature_name}</li>
+                        <li>${features[2].feature_name}</li>
+                        <li>${features[3].feature_name}</li>
                     </ul>
                 </div>
                 <div>
                     <h4>Integrations</h4>
                     <ul>
-                        <li>${data.integrations[0]}</li>
-                        <li>${data.integrations[1]}</li>
-                        <li>${data.integrations[2]}</li>
+                        <li>${
+                          integrations ? integrations[0] : "No Data Found"
+                        }</li>
+                        <li>${
+                          integrations ? integrations[1] : "No Data Found"
+                        }</li>
+                        <li>${
+                          integrations ? integrations[2] : "No Data Found"
+                        }</li>
+         
                     </ul>
                 </div>
             </div>
@@ -101,10 +120,10 @@ const displayAiToolDetails = (data) => {
         }</span>
         <div class="card-body">
             <h5 class="card-title text-center">${
-              data.input_output_examples[0].input
+              examples ? examples[0].input : "Can you give any example?"
             }</h5>
             <p class="card-text text-center">${
-              data.input_output_examples[0].output
+              examples ? examples[0].output : "No! Not Yet! Take a break!!!"
             }</p>
         </div>
         </div>
