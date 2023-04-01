@@ -1,13 +1,20 @@
-const loadAiTools = () => {
+const loadAiTools = (dataLimit) => {
   fetch("https://openapi.programming-hero.com/api/ai/tools")
     .then((res) => res.json())
-    .then((data) => displayAiTools(data.data.tools));
+    .then((data) => displayAiTools(data.data.tools, dataLimit));
 };
 
-const displayAiTools = (tools) => {
+const displayAiTools = (tools, dataLimit) => {
   const aiToolsContainer = document.getElementById("ai-tools-container");
+  aiToolsContainer.textContent = "";
+  const seeMore = document.getElementById("see-more");
+  if (dataLimit && tools.length > 6) {
+    tools.splice(0, 6);
+  } else {
+    seeMore.classList.add("d-none");
+  }
+
   tools.forEach((tool) => {
-    // console.log(tool);
     const aiToolDiv = document.createElement("div");
     aiToolDiv.classList.add("col");
     aiToolDiv.innerHTML = `
@@ -46,6 +53,15 @@ const displayAiTools = (tools) => {
     toggleSpinner(false);
   });
 };
+
+const process = (dataLimit) => {
+  loadAiTools(dataLimit);
+  toggleSpinner(true);
+};
+
+document.getElementById("btn-see-more").addEventListener("click", function () {
+  process();
+});
 
 const toggleSpinner = (isLoading) => {
   const spinner = document.getElementById("spinner");
@@ -142,4 +158,4 @@ const displayAiToolDetails = (data) => {
     `;
 };
 
-loadAiTools();
+loadAiTools(6);
