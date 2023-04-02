@@ -5,19 +5,15 @@ const loadAiTools = (dataLimit) => {
 };
 
 const displayAiTools = (tools, dataLimit) => {
-  let arr = [];
+  /*   let arr = [];
   for (const tool of tools) {
     const date = new Date(tool.published_in);
     arr.push({date});
   }
-
-  // Sort in Ascending order (low to high)
-  document.getElementById("btn-sort").addEventListener("click", function () {
-    const sortedAsc = arr.sort(
-      (objA, objB) => Number(objA.date) - Number(objB.date)
-    );
-    console.log(sortedAsc);
-  });
+  const btnSort = document.getElementById("btn-sort");
+  const sortedAsc = arr.sort(
+    (objA, objB) => Number(objA.date) - Number(objB.date)
+  ); */
 
   const aiToolsContainer = document.getElementById("ai-tools-container");
   aiToolsContainer.textContent = "";
@@ -101,7 +97,7 @@ const displayAiToolDetails = (data) => {
   const integrations = data.integrations;
   const examples = data.input_output_examples;
   modalBody.innerHTML = `
-    <div class="row row-cols-1 align-items-center row-cols-xl-2 g-4 px-5">
+    <div class="row row-cols-1 align-items-center row-cols-xl-2 g-4 px-5 my-3">
     <div class="col">
         <div class="special-card card px-2 py-3">
         <div class="card-body">
