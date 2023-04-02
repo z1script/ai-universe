@@ -1,9 +1,11 @@
+// load-aiTools using fetch()
 const loadAiTools = (dataLimit) => {
   fetch("https://openapi.programming-hero.com/api/ai/tools")
     .then((res) => res.json())
     .then((data) => displayAiTools(data.data.tools, dataLimit));
 };
 
+// display-aiTools
 const displayAiTools = (tools, dataLimit) => {
   /*   let arr = [];
   for (const tool of tools) {
@@ -14,10 +16,11 @@ const displayAiTools = (tools, dataLimit) => {
   const sortedAsc = arr.sort(
     (objA, objB) => Number(objA.date) - Number(objB.date)
   ); */
-
   const aiToolsContainer = document.getElementById("ai-tools-container");
   aiToolsContainer.textContent = "";
   const seeMore = document.getElementById("see-more");
+
+  // DataLimit for showing Limited Data By Default
   if (dataLimit && tools.length > 6) {
     tools.splice(0, 6);
   } else {
@@ -51,7 +54,7 @@ const displayAiTools = (tools, dataLimit) => {
                   tool.published_in
                 }</span></p>
                 </div>
-            <button onclick="loadAiToolsDetails('${
+            <button onclick="loadAiToolDetails('${
               tool.id
             }')" id="btn-arrow" data-bs-toggle="modal"
              data-bs-target="#aiToolDetailsModal"><i class="fa-solid arrow fa-arrow-right"></i>
@@ -73,6 +76,7 @@ document.getElementById("btn-see-more").addEventListener("click", function () {
   process();
 });
 
+// loading-spinner
 const toggleSpinner = (isLoading) => {
   const spinner = document.getElementById("spinner");
   if (isLoading === true) {
@@ -82,13 +86,15 @@ const toggleSpinner = (isLoading) => {
   }
 };
 
-const loadAiToolsDetails = async (id) => {
+// aiTool Details (Modal) with Dynamic fetch url by id
+const loadAiToolDetails = async (id) => {
   const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
   const res = await fetch(url);
   const data = await res.json();
   displayAiToolDetails(data.data);
 };
 
+// display aiTools Details (modal) dynamically
 const displayAiToolDetails = (data) => {
   console.log(data);
   const modalBody = document.getElementById("modal-body");
